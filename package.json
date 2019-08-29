@@ -1,0 +1,109 @@
+{
+  "name": "redux-confirm",
+  "version": "0.0.1",
+  "description": "Redux Confirm",
+  "main": "lib/index.js",
+  "module": "esm/index.js",
+  "sideEffects": false,
+  "files": [
+    "lib/",
+    "esm/"
+  ],
+  "types": "lib/index.d.ts",
+  "typings": "lib/index.d.ts",
+  "scripts": {
+    "start": "yarn storybook",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "lint": "tslint 'src/**/*.{ts,tsx}' -t verbose",
+    "lint:fix": "yarn lint --fix",
+    "lint:types": "tsc --noEmit",
+    "build:cjs": "tsc",
+    "build:es": "tsc -m esNext --outDir esm",
+    "build": "yarn build:cjs && yarn build:es",
+    "clean": "rimraf lib storybook-static esm",
+    "storybook": "start-storybook -p 6008",
+    "storybook:build": "build-storybook",
+    "storybook:upload": "gh-pages -d storybook-static --git \"$(which git)\"",
+    "storybook:clean": "rimraf storybook-static",
+    "release": "semantic-release"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn lint:types && lint-staged",
+      "pre-push": "yarn lint && yarn clean && yarn build && yarn test"
+    }
+  },
+  "author": "@streamich",
+  "license": "Unlicense",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jeemyeong/redux-confirm"
+  },
+  "bugs": {
+    "url": "https://github.com/jeemyeong/redux-confirm/issues"
+  },
+  "homepage": "https://github.com/jeemyeong/redux-confirm",
+  "dependencies": {
+  },
+  "devDependencies": {
+    "@babel/core": "7.5.5",
+    "@babel/plugin-syntax-dynamic-import": "7.2.0",
+    "@babel/preset-env": "7.5.5",
+    "@babel/preset-typescript": "7.3.3",
+    "@semantic-release/changelog": "3.0.4",
+    "@semantic-release/git": "7.0.16",
+    "@semantic-release/npm": "5.1.13",
+    "@types/jest": "24.0.18",
+    "babel-core": "6.26.3",
+    "babel-loader": "8.0.6",
+    "gh-pages": "2.1.1",
+    "husky": "3.0.4",
+    "jest": "24.9.0",
+    "lint-staged": "9.2.5",
+    "prettier": "1.18.2",
+    "rimraf": "3.0.0",
+    "semantic-release": "15.13.24",
+    "ts-loader": "6.0.4",
+    "ts-node": "8.3.0",
+    "tslint": "5.19.0",
+    "tslint-config-prettier": "1.18.0",
+    "tslint-eslint-rules": "5.4.0",
+    "tslint-plugin-prettier": "2.0.1",
+    "typescript": "3.5.3"
+  },
+  "config": {
+    "commitizen": {
+      "path": "git-cz"
+    }
+  },
+  "release": {
+    "branches": [
+      "master",
+      {
+        "name": "next",
+        "prerelease": "rc"
+      }
+    ],
+    "verifyConditions": [
+      "@semantic-release/changelog",
+      "@semantic-release/npm",
+      "@semantic-release/git"
+    ],
+    "prepare": [
+      "@semantic-release/changelog",
+      "@semantic-release/npm",
+      "@semantic-release/git"
+    ]
+  },
+  "lint-staged": {
+    "src/**/*.{ts,tsx}": [
+      "tslint --fix -t verbose",
+      "git add"
+    ]
+  },
+  "volta": {
+    "node": "10.16.0",
+    "yarn": "1.16.0"
+  }
+}
