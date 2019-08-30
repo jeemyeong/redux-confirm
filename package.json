@@ -1,6 +1,6 @@
 {
-  "name": "redux-confirm",
-  "version": "0.0.1",
+  "name": "@jeemyeong/redux-confirm",
+  "version": "1.0.0",
   "description": "Redux Confirm",
   "main": "lib/index.js",
   "module": "esm/index.js",
@@ -31,7 +31,7 @@
       "pre-push": "yarn lint && yarn clean && yarn build && yarn test"
     }
   },
-  "author": "@streamich",
+  "author": "@jeemyeong",
   "license": "Unlicense",
   "repository": {
     "type": "git",
@@ -42,8 +42,7 @@
   },
   "homepage": "https://github.com/jeemyeong/redux-confirm",
   "dependencies": {
-    "redux": "^4.0.4",
-    "redux-confirm": "../../redux-labs/redux-confirm"
+    "redux": "^4.0.4"
   },
   "devDependencies": {
     "@babel/core": "7.5.5",
