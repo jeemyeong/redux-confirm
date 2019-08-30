@@ -15,17 +15,14 @@
     "start": "yarn storybook",
     "test": "jest",
     "test:watch": "jest --watch",
-    "lint": "tslint 'src/**/*.{ts,tsx}' -t verbose",
+    "lint": "tslint 'src/**/*.{ts}' -t verbose",
     "lint:fix": "yarn lint --fix",
     "lint:types": "tsc --noEmit",
     "build:cjs": "tsc",
     "build:es": "tsc -m esNext --outDir esm",
     "build": "yarn build:cjs && yarn build:es",
-    "clean": "rimraf lib storybook-static esm",
+    "clean": "rimraf lib esm",
     "storybook": "start-storybook -p 6008",
-    "storybook:build": "build-storybook",
-    "storybook:upload": "gh-pages -d storybook-static --git \"$(which git)\"",
-    "storybook:clean": "rimraf storybook-static",
     "release": "semantic-release"
   },
   "husky": {
@@ -97,7 +94,7 @@
     ]
   },
   "lint-staged": {
-    "src/**/*.{ts,tsx}": [
+    "src/**/*.{ts}": [
       "tslint --fix -t verbose",
       "git add"
     ]
