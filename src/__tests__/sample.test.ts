@@ -1,4 +1,4 @@
-import ReduxConfirm from '../ReduxConfirm';
+import CreateMiddleware from '../ReduxConfirm';
 
 it('sample', () => {
   expect(true).toBe(true);
